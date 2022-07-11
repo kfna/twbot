@@ -6,6 +6,7 @@ const Axios = require('axios')
 var images = require("images");
 require('dotenv').config();
 
+console.log("Done!");
 
 var T = new Twit({
   consumer_key:         process.env.CONSUMER_KEY,
@@ -15,6 +16,8 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
   strictSSL:            true,     // optional - requires SSL certificates to be valid.
 })
+
+console.log()
 
 async function downloadImage(url, filepath,tid,cb) {
     const response = await Axios({
@@ -35,7 +38,7 @@ async function downloadImage(url, filepath,tid,cb) {
 }
 
 
-var stream = T.stream('statuses/filter', { track: process.env.HASH });
+var stream = T.stream('statuses/filter', { track: '#'+process.env.HASH });
 stream.on('direct_message', function (directMsg) {
   console.log(directMsg);
 })
