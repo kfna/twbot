@@ -34,6 +34,8 @@ async function downloadImage(url, filepath,tid,cb) {
     });
 }
 
+
+console.log(process.env);
 var stream = T.stream('statuses/filter', { track: process.env.HASH });
 stream.on('direct_message', function (directMsg) {
   console.log(directMsg);
@@ -68,7 +70,7 @@ stream.on('tweet', function (tweet) {
 
 
         //return res.json({result: body, status: 'success'});
-
+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
 
 
 
