@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^10.0.0",
+    "images": "^3.2.4",
+    "twit": "^2.2.11",
+    "twitter": "^1.7.1"
+  }
+}
