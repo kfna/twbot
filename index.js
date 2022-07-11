@@ -35,14 +35,13 @@ async function downloadImage(url, filepath,tid,cb) {
 }
 
 
-console.log(process.env);
 var stream = T.stream('statuses/filter', { track: process.env.HASH });
 stream.on('direct_message', function (directMsg) {
   console.log(directMsg);
 })
 
 stream.on('tweet', function (tweet) {
-
+    console.log("Start process..");
     downloadImage(tweet.user.profile_image_url.replace("_normal",""),tweet.user.id+".png",tweet.user.id,function(imagen,tid){
 
       console.log(imagen);
@@ -70,8 +69,6 @@ stream.on('tweet', function (tweet) {
 
 
         //return res.json({result: body, status: 'success'});
-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
-
 
 
 
