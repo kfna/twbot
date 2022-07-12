@@ -55,14 +55,12 @@ async function downloadImage(url, filepath,tid,cb) {
 
 var stream = T.stream('statuses/filter', { track: '#'+process.env.HASH+" @poncho_cruz" });
 stream.on('direct_message', function (directMsg) {
-  console.log(directMsg);
 })
 
 stream.on('tweet', function (tweet) {
     console.log("Start process..");
     downloadImage(tweet.user.profile_image_url.replace("_normal",""),tweet.user.id+".png",tweet.user.id,function(imagen,tid){
 
-      console.log(imagen);
       var b64content = fs.readFileSync(imagen, { encoding: 'base64' });
 
           T.post('media/upload', { media_data: b64content }, function (err, data, response) {
@@ -73,9 +71,7 @@ stream.on('tweet', function (tweet) {
               if (!err) {
                 var res = { status: process.env.REPLY_MSG+' @' + tweet.user.screen_name, in_reply_to_status_id: '' + tweet.id_str,media_ids: [mediaIdStr] };
                 T.post('statuses/update', res, function (err, data, response) {
-                  console.log(err);
-                  console.log(data);
-                  console.log(response);
+                  
                   fs.unlinkSync(tid+".png");
                   fs.unlinkSync(tid+"_share.jpg");
                 })
