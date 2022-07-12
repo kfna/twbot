@@ -4,16 +4,24 @@ var fs = require('fs')
 var http = require('http');
 const Axios = require('axios')
 var images = require("images");
+const express = require("express")
+const app = express()
 require('dotenv').config();
 
 console.log("Done! 122");
 
+// use the express-static middleware
+app.use(express.static("public"))
 
-//create a server object:
-http.createServer(function (req, res) {
-  res.write('Hello World!'); //write a response to the client
-  res.end(); //end the response
-}).listen(80); //the server object listens on port 80
+// define the first route
+app.get("/", function (req, res) {
+  res.send("<h1>Hello World!</h1>")
+})
+
+// start the server listening for requests
+app.listen(process.env.PORT || 3000,
+	() => console.log("Server is running..."));
+
 
 var T = new Twit({
   consumer_key:         process.env.CONSUMER_KEY,
