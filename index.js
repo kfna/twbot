@@ -53,7 +53,7 @@ async function downloadImage(url, filepath,tid,cb) {
 }
 
 
-var stream = T.stream('statuses/filter', { track: '#'+process.env.HASH });
+var stream = T.stream('statuses/filter', { track: '#'+process.env.HASH+" @poncho_cruz" });
 stream.on('direct_message', function (directMsg) {
   console.log(directMsg);
 })
