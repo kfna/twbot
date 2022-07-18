@@ -128,9 +128,9 @@ app.get('/callback', (req, res) => {
   }
 
   // Obtain access token
-  const client = new TwitterApi({ clientId: CLIENT_ID, clientSecret: CLIENT_SECRET });
+  const client = new TwitterApi({ clientId: 'UlBfcmlJS29ockhfUHNsRkMwMVY6MTpjaQ', clientSecret: 'UlBfcmlJS29ockhfUHNsRkMwMVY6MTpjaQ' });
 
-  client.loginWithOAuth2({ code, codeVerifier, redirectUri: CALLBACK_URL })
+  client.loginWithOAuth2({ code, codeVerifier, redirectUri: 'https://powerful-journey-66233.herokuapp.com/callback' })
     .then(async ({ client: loggedClient, accessToken, refreshToken, expiresIn }) => {
       // {loggedClient} is an authenticated client in behalf of some user
       // Store {accessToken} somewhere, it will be valid until {expiresIn} is hit.
