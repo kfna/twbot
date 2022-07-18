@@ -1,5 +1,5 @@
 
-var Twit = require('twit')
+//var Twit = require('twit')
 var fs = require('fs')
 var http = require('http');
 const Axios = require('axios')
@@ -23,7 +23,7 @@ app.listen(process.env.PORT || 3000,
 	() => console.log("Server is running..."));
 
 
-var T = new Twit({
+/*var T = new Twit({
   consumer_key:         process.env.CONSUMER_KEY,
   consumer_secret:       process.env.CONSUMER_SECRET,
   access_token:          process.env.ACCESS_TOKEN,
@@ -112,7 +112,7 @@ stream.on('tweet', function (tweet) {
 
 })
 
-
+*/
 app.get('/callback', (req, res) => {
   // Extract state and code from query string
   const { state, code } = req.query;
